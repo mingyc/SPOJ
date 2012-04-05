@@ -1,7 +1,7 @@
-from sys import stdin
+from sys import stdin, stdout
 
 def postfix(infix):
-    op_priority = { '(': 0, '+': 1, '-': 2, '*': 3, '/': 4, '^': 5 }
+    operators = { '(': 0, '+': 1, '-': 2, '*': 3, '/': 4, '^': 5 }
     stack = []
     for ch in infix:
         if ch =='(':
@@ -10,14 +10,13 @@ def postfix(infix):
             while stack[-1] != '(':
                 yield stack.pop()
             stack.pop()
-        elif ch in op_priority:
-            while op_priority[stack[-1]] >= op_priority[ch]:
+        elif ch in operators:
+            while operators[stack[-1]] >= operators[ch]:
                 yield stack.pop()
             stack.append(ch)
         else:
             yield ch
-
         
-stdin.readline()
-for expr in stdin:
-    print ''.join(postfix(expr[:-1]))
+if __name__ == '__main__':
+    stdin.readline()
+    map(stdout.write, map(''.join, map(postfix, stdin)))
