@@ -1,21 +1,21 @@
 from sys import stdin, stdout
 
-def postfix(infix):
-    operators = { '(': 0, '+': 1, '-': 2, '*': 3, '/': 4, '^': 5 }
+def postfix(infix, OPERATORS='(+-*/^'):
+    op = dict(zip(OPERATORS, xrange(len(OPERATORS))))
     stack = []
-    for ch in infix:
-        if ch =='(':
-            stack.append(ch)
-        elif ch == ')':
+    for c in infix:
+        if c =='(':
+            stack.append(c)
+        elif c == ')':
             while stack[-1] != '(':
                 yield stack.pop()
             stack.pop()
-        elif ch in operators:
-            while operators[stack[-1]] >= operators[ch]:
+        elif c in op:
+            while op[stack[-1]] >= op[c]:
                 yield stack.pop()
-            stack.append(ch)
+            stack.append(c)
         else:
-            yield ch
+            yield c
         
 if __name__ == '__main__':
     stdin.readline()
