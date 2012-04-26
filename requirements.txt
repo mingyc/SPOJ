@@ -1,0 +1,3 @@
+beautifulsoup4==4.0.4
+html2text==3.200.3
+shovel==0.1.9
