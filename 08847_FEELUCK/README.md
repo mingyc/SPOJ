@@ -26,7 +26,7 @@ Please look at the sample output for further information of output format.
 
     
 ### Input:
-2
+2  
 www.youtube.com 1  
 www.google.com 2  
 www.google.com.hk 3  
