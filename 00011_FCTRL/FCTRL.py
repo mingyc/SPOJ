@@ -1,4 +1,9 @@
 from sys import stdin
 
-for line in stdin:
-    N = int(line)
+stdin.next()
+for N in map(int, stdin):
+    zeroes, five = 0, 5
+    while five <= N:
+        zeroes += N/five
+        five *= 5
+    print zeroes
